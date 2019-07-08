@@ -1,0 +1,189 @@
+
+
+
+<!-- This is to include Google Maps javascript API,  
+
+    Please ensure that you have a Google maps Javascript API KEY and replace part of the code that is "INSERT_YOUR_MAP_KEY_HERE"
+
+Author M.Brohi -->
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+      <style type="text/css">
+        html { height: 100%}
+        body { height: 100%; margin: 0;}
+       #mapDiv { width: 100%; height: 100%; }
+
+      </style>
+
+      
+
+       
+
+        <!-- This is to include Google Maps javascript API,  Please ensure that you have a Google maps Javascript API KEY and replace part of the code-->
+
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAxA-RWWRMWIXpkWCHBF_IB0goF_mwrn8&callback=initMap"
+        type="text/javascript"></script>
+        
+
+
+        <!-- Map CREATED is here-->
+
+
+
+        <script type="text/javascript">
+
+         //Global functions
+
+        var map;
+        
+
+       function initMap() {
+
+        google.maps.visualRefresh = true;
+        
+        var mapOptions = {
+
+        center: new google.maps.LatLng(41.88425 , -87.63245),
+
+        zoom:10,
+
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+        };
+                    //Map DOM celement
+
+                    var  mapElement = document.getElementById('mapDiv');
+
+map = new google.maps.Map(mapElement, mapOptions);
+
+
+
+google.maps.event.addDomListener(window, 'load', initMap);
+
+     
+        
+         
+
+      /*   function zoomToChicago () {
+            var chicago = new new google.maps.LatLng(41.88425 , -87.63245);
+            map.setCenter(chicago);
+        }
+            
+        function zoomToStreet () {
+            map.setZoom(18);
+        }
+
+        function disableDrag () {
+            map.setOptions ({ draggable: false});
+        }
+        function setMaxZoom () {
+            map.setOptions ({ maxZoom: 12});
+        }
+        function setMinZoom () {
+            map.setOptions ({ minZoom: 5 });
+        }
+        function changeUI () {
+            map.setOptions ({ disableDefaultUI: true });
+        }
+        function disableScroll () {
+            map.setOptions ({ scrollwheel: false });
+        }*/
+
+        function startButtonEvents () {
+            
+           /* document.getElementById('btnZoomtoChicago'
+            ).addEventListener('click', function() {
+             zoomToChicago();
+            });
+            document.getElementById('btnZoomToStreet'
+            ).addEventListener('click', function() {
+             zoomToStreet();
+            });
+            document.getElementById('btnDisableDrag'
+            ).addEventListener('click', function(){ 
+             disableDrag();
+            });
+            document.getElementById('btnMaxZoom')
+            .addEventListener('click', function(){
+            setMaxZoom();
+            });
+            document.getElementById('btnMinZoom')
+            .addEventListener('click', function(){ 
+            setMinZoom();
+            });
+            document.getElementById('btnChangeUI')
+            .addEventListener('click',function() {
+            changeUI();
+            });
+            document.getElementById('btnDisableScroll')
+            .addEventListener('click', function() {
+            disableScroll();
+            });*/
+            document.getElementById('btnRoad'
+            ).addEventListener('click', function() {
+             map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+            });
+            document.getElementById('btnSat'
+            ).addEventListener('click', function() {
+            map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            });
+            document.getElementById('btnHyb'
+            ).addEventListener('click', function() {
+            map.setMapTypeId(google.maps.MapTypeId.HYBRID); 
+            });   
+            document.getElementById('btnTer'
+            ).addEventListener('click', function() {
+            map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+            });
+        }
+        
+        startButtonEvents ();
+    
+    }
+       
+
+        
+
+
+
+
+         </script>
+
+         </head>
+
+
+
+         <body>
+
+            <b> Your Title for the Map  </b>
+            <input id="btnZoomtoChicago" type="button" value="Zoom to Chicago">
+            <input id="btnZoomToStreet" type="button" value="Zoom to Street Level">
+            <input id="btnDisableDrag" type="button" value="Disable Drag">
+            <input id="btnMaxZoom" type="button" value="Zoom to MAX 12">
+            <input id="btnMinZoom" type="button" value="Zoom to MIN 5">
+            <input id="btnChangeUI" type="button" value="Change UI">
+            <input id="btnDisableScroll" type="button" value="Disable Scroll Zoom">
+            <input id="btnRoad" type="button" value="RoadMap">
+            <input id="btnSat" type="button" value="Satellite">
+            <input id="btnHyb" type="button" value="Hybrid">
+            <input id="btnTer" type="button" value="Terrain">   
+            
+
+
+            <div id ="mapDiv"></div>
+
+
+
+        </body>
+
+        </html>
