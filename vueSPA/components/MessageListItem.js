@@ -1,7 +1,9 @@
+import lifecycleLogger from '../mixins/lifecycle-logger.mixin.js'
 export default {
     name:'MessageListItem',
-    template: `<li>{{ item.text }} - {{ item.createdAt }},
+    template: `<li>{{ item.text }} - {{ item.createdAt | datetime }}
     <button @click='deleteClicked">X</button></li>`,
+    mixins: [lifecycleLogger],
     prop: {
         items: {
             type: Object,

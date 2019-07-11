@@ -25,7 +25,12 @@
             <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
             <script type="module">
                   import MessageList from './components/MessageList.js';
+                  import './filters/datetime.filter.js';
+                  import LifecyleLogger from './plugins/lifecycle-logger.plugin.js';
+                  import './directives/focus.directives.js'
+                  Vue.use(LifecyleLogger, {beforeMount: false})
             let vm = new Vue({
+                mixins: [lifecyleLogger],
                 el: '#app',
                 data: {
                     messages: [],
@@ -45,6 +50,8 @@
                         this.messages.push({
                             text: this.newMessage, createdAt: new Date () });
                             this.newMessage ='';
+                            let now = new Date();
+                            this.messages.push({ id: now.getTime(), text:this.newMessage, cretedAt:now});
                         },
                     deleteMessage (message) {
                         this.messages.splice(this.messages.indexOf(messages), 1 )
