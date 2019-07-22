@@ -1,7 +1,11 @@
 package app.messages;
 
+import org.springframework.stereotype.Component;
+
+@Component
+
 public class MessageService {
-    private MessageRepositoty repository;
+    private MessageRepository repository;
     
     public MessageService (MessageRepository repository){
         this.repository = repository;
